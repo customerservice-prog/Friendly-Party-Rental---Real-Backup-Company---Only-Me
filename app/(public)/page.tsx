@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import CategoryCard from '@/components/public/CategoryCard'
+import HeroSection from '@/components/public/HeroSection'
+import ComicBookBackground from '@/components/public/ComicBookBackground'
 import ReviewCarousel from '@/components/public/ReviewCarousel'
 import WeddingPackageCard from '@/components/public/WeddingPackageCard'
 import { PUBLIC_CATEGORIES, WEDDING_PACKAGES } from '@/lib/utils'
@@ -7,31 +9,7 @@ import { PUBLIC_CATEGORIES, WEDDING_PACKAGES } from '@/lib/utils'
 export default function HomePage() {
   return (
   <div>
-    {/* Hero Section */}
-    <section className="relative overflow-hidden">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
-        <div className="bg-teal-400 h-32 md:h-48" />
-        <div className="bg-pink-400 h-32 md:h-48" />
-        <div className="bg-green-400 h-32 md:h-48" />
-        <div className="bg-orange-400 h-32 md:h-48" />
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8 px-4">
-          <div className="bg-dark text-white rounded-full px-6 py-3 font-bold text-sm md:text-base shadow-lg">
-            Clean & Event-Ready Equipment
-          </div>
-          <Link
-            href="/order-by-date"
-            className="bg-red-600 text-white rounded-full px-6 py-3 font-bold text-sm md:text-base shadow-lg hover:bg-red-700 border-2 border-primary"
-          >
-            CLICK HERE to Book
-          </Link>
-          <div className="bg-dark text-white rounded-full px-6 py-3 font-bold text-sm md:text-base shadow-lg">
-            Safety First
-          </div>
-        </div>
-      </div>
-    </section>
+    <HeroSection />
 
     {/* Intro Section */}
     <section className="max-w-4xl mx-auto px-4 py-12 text-center">
@@ -50,7 +28,7 @@ export default function HomePage() {
           Serving Syracuse, Minoa, Cicero, Manlius, Camillus, Baldwinsville, Clay, Cazenovia, Liverpool, and surrounding Central New York areas.
         </p>
       </div>
-      <Link href="/order-by-date" className="btn-primary mt-8 inline-block">
+      <Link href="/order-by-date" className="btn-gold mt-8 inline-block">
         Book Your Party Rentals Online
       </Link>
     </section>
@@ -72,8 +50,8 @@ export default function HomePage() {
             text: 'We show up when we say we will. Our team provides dependable delivery and pickup so you can focus on enjoying your event.',
           },
         ].map((item) => (
-          <div key={item.title} className="bg-white p-6 rounded-lg shadow border border-primary/30">
-            <div className="text-primary text-2xl mb-3">✓</div>
+          <div key={item.title} className="bg-[#F6F4F2] p-6 rounded-lg">
+            <div className="text-gray-500 text-2xl mb-3 font-bold">✓</div>
             <h3 className="font-bold text-dark mb-2">{item.title}</h3>
             <p className="text-body text-sm">{item.text}</p>
           </div>
@@ -82,28 +60,30 @@ export default function HomePage() {
     </section>
 
     {/* YouTube Section */}
-    <section className="max-w-4xl mx-auto px-4 py-12 text-center">
-      <h2 className="text-2xl font-bold text-dark mb-6">Watch Us on YouTube</h2>
-      <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-6">
-        <iframe
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed?listType=user_uploads&list=friendlypartyrental6272"
-          title="Friendly Party Rental YouTube"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          className="w-full h-full"
-        />
+    <ComicBookBackground className="py-12">
+      <div className="max-w-4xl mx-auto px-4 text-center">
+        <h2 className="text-2xl font-bold text-white mb-6 drop-shadow-md">Watch Us on YouTube</h2>
+        <div className="aspect-video bg-black/20 rounded-lg overflow-hidden mb-6 shadow-lg">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/LWQvMclQea4"
+            title="Friendly Party Rental YouTube"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full"
+          />
+        </div>
+        <Link href="/order-by-date" className="btn-gold inline-block">
+          Book Your Rentals Online
+        </Link>
       </div>
-      <Link href="/order-by-date" className="btn-primary inline-block">
-        Book Your Rentals Online
-      </Link>
-    </section>
+    </ComicBookBackground>
 
     {/* Category Grid */}
-    <section className="max-w-7xl mx-auto px-4 py-12">
+    <section className="max-w-4xl mx-auto px-4 py-12">
       <h2 className="text-2xl font-bold text-dark mb-8 text-center">Browse Our Rentals</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         {PUBLIC_CATEGORIES.map((cat) => (
           <CategoryCard key={cat.slug} name={cat.name} href={cat.href} image={cat.image} />
         ))}

@@ -1,9 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { Facebook, Youtube, ChevronDown } from 'lucide-react'
 import { BUSINESS, NAV_RENTALS } from '@/lib/utils'
+
+const LOGO_URL = 'https://files.sysers.com/cp/upload/315/editor/1.png'
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -21,59 +24,92 @@ export default function Header() {
   const [rentalsOpen, setRentalsOpen] = useState(false)
 
   return (
-    <header className="w-full">
-      <div className="bg-primary">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2 text-sm">
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-dark">
-            <span>
-              <a href={`tel:${BUSINESS.phone}`} className="hover:underline font-medium">
+    <header className="w-full bg-primary">
+      {/* 3-column header row */}
+      <div className="max-w-7xl mx-auto px-4 py-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+          {/* LEFT column */}
+          <div className="text-sm text-body leading-relaxed">
+            <p>
+              <a href={`tel:${BUSINESS.phone}`} className="font-bold text-dark hover:underline">
                 {BUSINESS.phone}
               </a>
               {' | '}
-              <a href={`sms:${BUSINESS.text}`} className="hover:underline">Text Us</a>
-            </span>
-            <a href={`mailto:${BUSINESS.email}`} className="hover:underline">{BUSINESS.email}</a>
-            <span>{BUSINESS.address}</span>
-            <span>Serving {BUSINESS.serviceArea}</span>
+              <a href={`sms:${BUSINESS.text}`} className="font-bold text-dark hover:underline">
+                Text Us
+              </a>
+            </p>
+            <p>
+              <a href={`mailto:${BUSINESS.email}`} className="hover:underline">
+                {BUSINESS.email}
+              </a>
+            </p>
+            <p>| {BUSINESS.address}</p>
+            <p>Serving {BUSINESS.serviceArea}</p>
           </div>
-          <div className="flex items-center gap-3">
-            <a href={BUSINESS.facebook} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700">
-              <Facebook size={20} />
-            </a>
-            <a href={BUSINESS.youtube} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700">
-              <Youtube size={20} />
-            </a>
-            <a href={BUSINESS.yelp} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700 text-sm font-bold">
-              Yelp
-            </a>
-            <Link href="/order-by-date" className="btn-primary text-sm py-1.5 px-4">
+
+          {/* CENTER column — logo */}
+          <div className="flex justify-center">
+            <Link href="/">
+              <Image
+                src={LOGO_URL}
+                alt="Friendly Party Rental"
+                width={280}
+                height={80}
+                className="h-auto w-auto max-h-[80px] max-w-[280px] object-contain"
+                priority
+              />
+            </Link>
+          </div>
+
+          {/* RIGHT column — social + Book Now */}
+          <div className="flex flex-col items-center md:items-end gap-2">
+            <div className="flex items-center gap-3">
+              <a
+                href={BUSINESS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-600 hover:text-red-700"
+                aria-label="Facebook"
+              >
+                <Facebook size={24} fill="currentColor" />
+              </a>
+              <a
+                href={BUSINESS.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-600 hover:text-red-700"
+                aria-label="YouTube"
+              >
+                <Youtube size={24} />
+              </a>
+              <a
+                href={BUSINESS.yelp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-600 hover:text-red-700 font-bold text-sm"
+                aria-label="Yelp"
+              >
+                Yelp
+              </a>
+            </div>
+            <Link href="/order-by-date" className="btn-primary text-sm py-2 px-5 whitespace-nowrap">
               Book Now ►
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="bg-white py-4 border-b">
-        <div className="max-w-7xl mx-auto px-4 flex justify-center">
-          <Link href="/" className="text-center">
-            <span className="text-3xl font-bold">
-              <span className="text-primary">Friendly</span>
-              <span className="text-pink-500"> Party</span>
-              <span className="text-purple-600"> Rental</span>
-            </span>
-          </Link>
-        </div>
-      </div>
-
-      <nav className="bg-white border-b shadow-sm">
+      {/* Nav bar — golden yellow background, single row on desktop */}
+      <nav className="border-t border-yellow-500/30">
         <div className="max-w-7xl mx-auto px-4">
-          <ul className="flex flex-wrap items-center justify-center gap-1 md:gap-4 py-2">
+          <ul className="flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-between gap-x-1 lg:gap-x-0 py-2">
             {navLinks.map((link) => (
               <li key={link.name} className="relative">
                 {link.hasDropdown ? (
                   <button
                     onClick={() => setRentalsOpen(!rentalsOpen)}
-                    className="flex items-center gap-1 px-3 py-2 text-body hover:text-secondary font-medium text-sm"
+                    className="flex items-center gap-0.5 px-2 lg:px-3 py-2 text-body hover:text-dark font-medium text-sm whitespace-nowrap"
                   >
                     {link.name}
                     <ChevronDown size={14} />
@@ -81,7 +117,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={link.href}
-                    className="px-3 py-2 text-body hover:text-secondary font-medium text-sm block"
+                    className="px-2 lg:px-3 py-2 text-body hover:text-dark font-medium text-sm block whitespace-nowrap"
                   >
                     {link.name}
                   </Link>
