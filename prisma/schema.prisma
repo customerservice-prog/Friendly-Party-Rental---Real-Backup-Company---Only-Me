@@ -1,0 +1,204 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id                String   @id @default(cuid())
+  name              String
+  slug              String   @unique
+  description       String?
+  picture           String?
+  displayToCustomer Boolean  @default(true)
+  scheduleProfile   String?
+  sortOrder         Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  items             Item[]
+}
+
+model Item {
+  id                String   @id @default(cuid())
+  name              String
+  slug              String   @unique
+  description       String?
+  type              String   @default("Regular")
+  cost              Float
+  quantity          Int      @default(1)
+  picture           String?
+  displayToCustomer Boolean  @default(true)
+  scheduleProfile   String?
+  categoryId        String
+  category          Category @relation(fields: [categoryId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  orderItems        OrderItem[]
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String
+  phone     String?
+  address   String?
+  city      String?
+  state     String?
+  zip       String?
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  orderNumber     String      @unique
+  customerId      String
+  customer        Customer    @relation(fields: [customerId], references: [id])
+  status          String      @default("active")
+  eventDate       DateTime
+  eventEndDate    DateTime?
+  eventAddress    String?
+  eventCity       String?
+  eventState      String?
+  eventZip        String?
+  deliveryType    String      @default("delivery")
+  deliveryFee     Float       @default(0)
+  subtotal        Float       @default(0)
+  taxAmount       Float       @default(0)
+  depositAmount   Float       @default(0)
+  totalAmount     Float       @default(0)
+  amountPaid      Float       @default(0)
+  balanceDue      Float       @default(0)
+  notes           String?
+  internalNotes   String?
+  stripePaymentId String?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  items           OrderItem[]
+  payments        Payment[]
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  itemId    String?
+  item      Item?    @relation(fields: [itemId], references: [id])
+  itemName  String
+  quantity  Int
+  unitPrice Float
+  total     Float
+  createdAt DateTime @default(now())
+}
+
+model Payment {
+  id              String   @id @default(cuid())
+  orderId         String
+  order           Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  amount          Float
+  method          String   @default("card")
+  stripePaymentId String?
+  notes           String?
+  createdAt       DateTime @default(now())
+}
+
+model ClosedDate {
+  id        String   @id @default(cuid())
+  date      DateTime @unique
+  reason    String?
+  createdAt DateTime @default(now())
+}
+
+model ServiceArea {
+  id        String   @id @default(cuid())
+  city      String
+  state     String   @default("NY")
+  zip       String
+  region    String?
+  baseFee   Float    @default(0)
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String    @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  eventDate DateTime?
+  message   String
+  isRead    Boolean   @default(false)
+  createdAt DateTime  @default(now())
+}
+
+model EmploymentApplication {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String?
+  email     String
+  position  String?
+  message   String?
+  createdAt DateTime @default(now())
+}
+
+model Coupon {
+  id             String    @id @default(cuid())
+  code           String    @unique
+  discountType   String    @default("percentage")
+  discountAmount Float
+  expiresAt      DateTime?
+  isActive       Boolean   @default(true)
+  usageCount     Int       @default(0)
+  createdAt      DateTime  @default(now())
+}
+
+model DepositRule {
+  id        String   @id @default(cuid())
+  type      String   @default("percentage")
+  amount    Float    @default(25)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model CompanySettings {
+  id           String   @id @default(cuid())
+  businessName String   @default("Friendly Party Rental")
+  phone        String?
+  email        String?
+  address      String?
+  city         String?
+  state        String?
+  zip          String?
+  timeZone     String   @default("America/New_York")
+  updatedAt    DateTime @updatedAt
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  url       String
+  caption   String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Task {
+  id        String   @id @default(cuid())
+  title     String
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
