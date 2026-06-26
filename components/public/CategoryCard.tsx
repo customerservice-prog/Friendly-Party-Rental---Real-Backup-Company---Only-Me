@@ -11,20 +11,28 @@ interface CategoryCardProps {
 
 export default function CategoryCard({ name, href, image }: CategoryCardProps) {
   return (
-    <Link href={href} className="category-card block group bg-white">
-      <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
-        {image && (
-          <Image
-            src={image}
-            alt={name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform"
-            sizes="(max-width: 768px) 50vw, 40vw"
-          />
-        )}
-      </div>
-      <div className="p-3 text-center border-t-2 border-primary">
-        <h3 className="text-sm font-medium text-body group-hover:text-secondary">{name}</h3>
+    <Link href={href} className="block group">
+      <div className="border-2 rounded overflow-hidden hover:shadow-lg transition-shadow"
+        style={{ borderColor: '#EEC400' }}>
+        <div className="bg-white px-2 py-1 text-center text-sm font-medium"
+          style={{ color: 'rgb(86,86,86)' }}>
+          {name}
+        </div>
+        <div className="relative w-full" style={{ paddingTop: '75%' }}>
+          {image ? (
+            <Image
+              src={image}
+              alt={name}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              unoptimized
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-4xl">
+              🎉
+            </div>
+          )}
+        </div>
       </div>
     </Link>
   )
