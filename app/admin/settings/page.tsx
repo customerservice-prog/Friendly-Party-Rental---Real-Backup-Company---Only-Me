@@ -33,7 +33,6 @@ const workingLinks: Record<string, string> = {
   'Service Areas': '/admin/settings/service-areas',
   'Closed Dates': '/admin/settings/closed-dates',
   'Coupons': '/admin/settings/coupons',
-  'Closed Dates': '/admin/settings/closed-dates',
   'Deposit Rules': '/admin/settings/deposit-rules',
   'Categories': '/admin/categories',
   'Items': '/admin/items',
