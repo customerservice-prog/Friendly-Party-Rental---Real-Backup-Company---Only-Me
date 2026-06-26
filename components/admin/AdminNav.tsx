@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { signOut, useSession } from 'next-auth/react'
 import {
   Home,
@@ -14,9 +14,6 @@ import {
   Megaphone,
   HelpCircle,
 } from 'lucide-react'
-import { cn } from '@/lib/utils'
-
-const LOGO_URL = 'https://files.sysers.com/cp/upload/315/editor/1.png'
 
 const navItems = [
   { href: '/admin', icon: Home, label: 'Home' },
@@ -26,60 +23,70 @@ const navItems = [
   { href: '/admin/delivery', icon: Truck, label: 'Delivery' },
   { href: '/admin/reports', icon: BarChart2, label: 'Reports' },
   { href: '/admin/marketing', icon: Megaphone, label: 'Marketing' },
-  { href: '/admin/settings', icon: HelpCircle, label: 'Help' },
+  { href: '/admin/help', icon: HelpCircle, label: 'Help' },
 ]
 
 export default function AdminNav() {
   const pathname = usePathname()
+  const router = useRouter()
   const { data: session } = useSession()
-  const username = (session?.user as { username?: string })?.username || 'bryanp315'
+
+  const handleSignOut = async () => {
+    await signOut({ redirect: false })
+    router.push('/admin/login')
+  }
+
+  const username = session?.user?.name || 'bryanp315'
 
   return (
-    <header className="bg-[#2d6a2d] text-white border-b-4 border-[#4CAF50]">
-      <div className="flex items-center justify-between px-4 py-2">
-        <div className="flex items-center gap-1">
-          <Link href="/admin" className="mr-3 flex-shrink-0">
-            <Image
-              src={LOGO_URL}
-              alt="Friendly Party Rental"
-              width={120}
-              height={40}
-              className="h-[40px] w-auto object-contain"
-            />
-          </Link>
-          {navItems.map((item) => {
-            const Icon = item.icon
-            const active =
-              pathname === item.href ||
-              (item.href !== '/admin' && pathname.startsWith(item.href))
-            return (
-              <Link
-                key={item.href + item.label}
-                href={item.href}
-                className={cn(
-                  'p-2 rounded text-white hover:bg-[#1a3a1a] transition-colors',
-                  active && 'bg-[#1a3a1a]'
-                )}
-                title={item.label}
-              >
-                <Icon size={20} />
-              </Link>
-            )
-          })}
-        </div>
-        <div className="flex items-center gap-3 text-sm">
-          <span className="text-white">Signed in as {username} (Administrator)</span>
-          <button
-            onClick={() => signOut({ callbackUrl: '/admin/login' })}
-            className="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm font-medium transition-colors"
-          >
-            Logout
-          </button>
-          <button className="bg-[#E07B00] hover:bg-orange-600 text-white px-3 py-1 rounded text-sm font-medium transition-colors">
-            New UI
-          </button>
-        </div>
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 h-16"
+      style={{ backgroundColor: '#2d6a2d', borderBottom: '3px solid #4CAF50' }}>
+      <div className="flex items-center gap-4">
+        <Link href="/admin">
+          <Image
+            src="https://files.sysers.com/cp/upload/315/editor/1.png"
+            alt="Friendly Party Rental"
+            width={120}
+            height={40}
+            className="h-10 w-auto object-contain"
+            unoptimized
+          />
+        </Link>
       </div>
-    </header>
+      <div className="flex items-center gap-1">
+        {navItems.map(({ href, icon: Icon, label }) => {
+          const isActive = pathname === href
+          return (
+            <Link
+              key={href}
+              href={href}
+              title={label}
+              className="flex flex-col items-center px-3 py-1 rounded hover:bg-green-700 transition-colors"
+              style={{ color: isActive ? '#f5c518' : 'white' }}
+            >
+              <Icon size={20} />
+              <span className="text-xs mt-0.5">{label}</span>
+            </Link>
+          )
+        })}
+      </div>
+      <div className="flex items-center gap-3">
+        <span className="text-white text-sm">
+          Signed in as <strong>{username}</strong> (Administrator)
+        </span>
+        <button
+          onClick={handleSignOut}
+          className="px-3 py-1 text-sm rounded text-white hover:bg-green-700 border border-green-500"
+        >
+          Logout
+        </button>
+        <button
+          className="px-3 py-1 text-sm rounded text-white font-semibold"
+          style={{ backgroundColor: '#E07B00' }}
+        >
+          New UI
+        </button>
+      </div>
+    </nav>
   )
 }
