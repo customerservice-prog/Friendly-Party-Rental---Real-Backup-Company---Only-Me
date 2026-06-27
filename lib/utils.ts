@@ -42,6 +42,7 @@ export const BUSINESS = {
   name: 'Friendly Party Rental',
   legalName: 'Friendly Party Rental L.L.C.',
   phone: '315-884-1498',
+  text: '315-884-1498',
   email: 'customerservice@friendlypartyrental.com',
   address: '330 Costello Parkway',
   city: 'Minoa',
@@ -56,6 +57,7 @@ export const BUSINESS = {
   instagram: 'https://www.instagram.com/friendlypartyrental',
   tiktok: '',
   twitter: '',
+  mapUrl: 'https://maps.google.com/?q=330+Costello+Parkway+Minoa+NY+13116',
 }
 
 export const NAV_RENTALS = [
