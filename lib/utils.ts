@@ -262,7 +262,7 @@ export const WEDDING_PACKAGES = [
     price: 345,
     guests: 30,
     signature: false,
-    features: [
+    items: [
       '20x20 White Tent',
       '3 Round Tables',
       '30 Folding Chairs',
@@ -277,7 +277,7 @@ export const WEDDING_PACKAGES = [
     price: 520,
     guests: 50,
     signature: false,
-    features: [
+    items: [
       '20x40 White Tent',
       '5 Round Tables',
       '50 Folding Chairs',
@@ -293,7 +293,7 @@ export const WEDDING_PACKAGES = [
     price: 895,
     guests: 100,
     signature: false,
-    features: [
+    items: [
       '40x60 White Tent',
       '10 Round Tables',
       '100 Chiavari Chairs',
@@ -310,7 +310,7 @@ export const WEDDING_PACKAGES = [
     price: 1495,
     guests: 150,
     signature: true,
-    features: [
+    items: [
       '40x80 White Tent',
       '15 Round Tables',
       '150 Chiavari Chairs',
@@ -329,7 +329,7 @@ export const WEDDING_PACKAGES = [
     price: 2495,
     guests: 250,
     signature: true,
-    features: [
+    items: [
       'Custom Tent Configuration',
       '25 Round Tables',
       '250 Chiavari Chairs',
@@ -374,7 +374,7 @@ export const REVIEWS = [
     author: 'David R.',
     rating: 5,
     date: '2024-05-28',
-    text: 'Best party rental company in Syracuse! Used them for our daughter\'s birthday and they went above and beyond. The tent setup was perfect!',
+    text: 'Best party rental company in Syracuse! Used them for our daughter's birthday and they went above and beyond. The tent setup was perfect!',
     source: 'Yelp',
   },
 ]
