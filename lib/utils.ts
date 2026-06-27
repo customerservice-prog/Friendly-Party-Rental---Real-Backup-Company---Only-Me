@@ -34,32 +34,128 @@ export function slugify(text: string): string {
   return text
     .toLowerCase()
     .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .trim()
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
 }
 
-export const BUSINESS = {
-  name: 'Friendly Party Rental',
-  legalName: 'Party Rental L.L.C.',
-  phone: '315-884-1498',
-  text: '315-884-1498',
-  email: 'customerservice@friendlypartyrental.com',
-  address: '330 Costello Parkway, Minoa, NY 13116',
-  serviceArea: 'Syracuse & Nearby Cities',
-  facebook: 'https://www.facebook.com/profile.php?id=61554646135412',
-  youtube: 'https://www.youtube.com/@friendlypartyrental6272',
-  yelp: 'https://www.yelp.com/biz/friendly-party-rental-syracuse',
-  hours: 'Mon-Fri 8AM-6PM, Sat 8AM-4PM, Sun by appointment',
-}
+export const PUBLIC_CATEGORIES = [
+  {
+    slug: 'order-by-date',
+    name: 'Order by Date',
+    href: '/order-by-date',
+    image: 'https://files.sysers.com/cp/upload/315/editor/med/NewOrderByDate.png',
+  },
+  {
+    slug: 'weddings',
+    name: 'Weddings',
+    href: '/weddings',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/victoria-grady_r-tagg-2546-2.jpg',
+  },
+  {
+    slug: 'table-chair-rentals',
+    name: 'Table & Chair Rentals — Syracuse, NY',
+    href: '/category/table-chair-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_38_40-AM.png',
+  },
+  {
+    slug: 'tent-rentals',
+    name: 'Tent Rentals — Syracuse, NY',
+    href: '/category/tent-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_38_16-AM.png',
+  },
+  {
+    slug: 'dance-floor-stage-rentals',
+    name: 'Dance Floor & Stage Rentals — Syracuse, NY',
+    href: '/category/dance-floor-stage-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_41_14-AM.png',
+  },
+  {
+    slug: 'party-rental-packages',
+    name: 'Party Rental Packages — Syracuse, NY',
+    href: '/category/party-rental-packages',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_39_22-AM.png',
+  },
+  {
+    slug: 'beverage-food-service',
+    name: 'Beverage & Food Service Rentals — Syracuse, NY',
+    href: '/category/beverage-food-service',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_44_30-AM.png',
+  },
+  {
+    slug: 'heater-fan-rentals',
+    name: 'Heater & Fan Rentals — Syracuse, NY',
+    href: '/category/heater-fan-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_47_00-AM.png',
+  },
+  {
+    slug: 'linen-rentals',
+    name: 'Linen & Tablecloth Rentals — Syracuse, NY',
+    href: '/category/linen-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_40_05-AM.png',
+  },
+  {
+    slug: 'concession-machine-rentals',
+    name: 'Concession Machine Rentals — Syracuse, NY',
+    href: '/category/concession-machine-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_42_03-AM.png',
+  },
+  {
+    slug: 'yard-game-rentals',
+    name: 'Yard Game Rentals — Syracuse, NY',
+    href: '/category/yard-game-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_37_29-AM.png',
+  },
+  {
+    slug: 'event-lighting-rentals',
+    name: 'Event Lighting Rentals — Syracuse, NY',
+    href: '/category/event-lighting-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_40_24-AM.png',
+  },
+  {
+    slug: 'generator-rentals',
+    name: 'Generator Rentals — Syracuse, NY',
+    href: '/category/generator-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_40_58-AM.png',
+  },
+  {
+    slug: 'photobooth-rentals',
+    name: 'Photobooth Rentals — Syracuse, NY',
+    href: '/category/photobooth-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_39_03-AM.png',
+  },
+  {
+    slug: 'foam-party-machine-rentals',
+    name: 'Foam Party Machine Rentals — Syracuse, NY',
+    href: '/category/foam-party-machine-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_48_33-AM.png',
+  },
+  {
+    slug: 'inflatable-movie-screen-rentals',
+    name: 'Inflatable Movie Screen Rentals — Syracuse, NY',
+    href: '/category/inflatable-movie-screen-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_49_44-AM.png',
+  },
+  {
+    slug: 'bounce-house-rentals',
+    name: 'Bounce House Rentals — Syracuse, NY',
+    href: '/category/bounce-house-rentals',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Mar-10--2026--04_18_04-PM.png',
+  },
+  {
+    slug: 'party-rental-accessories',
+    name: 'Party Rental Accessories — Syracuse, NY',
+    href: '/category/party-rental-accessories',
+    image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Jun-9--2026--05_10_38-AM.png',
+  },
+]
 
 export const WEDDING_PACKAGES = [
   {
-    id: 'package-1',
     name: 'Backyard Elopement',
-    price: 345,
-    guests: 30,
+    price: '$345.00',
+    guests: 'Up to 30 guests',
     popular: false,
+    signature: false,
     items: [
       'Pole Tent (10x10 or 10x20)',
       'Up to 4 Folding Tables',
@@ -69,11 +165,11 @@ export const WEDDING_PACKAGES = [
     ],
   },
   {
-    id: 'package-2',
     name: 'Classic Ceremony',
-    price: 520,
-    guests: 50,
+    price: '$520.00',
+    guests: 'Up to 50 guests',
     popular: false,
+    signature: false,
     items: [
       'Pole Tent (10x20 or 20x20)',
       'Up to 6 Folding Tables',
@@ -84,11 +180,11 @@ export const WEDDING_PACKAGES = [
     ],
   },
   {
-    id: 'package-3',
     name: 'Garden Reception',
-    price: 2380,
-    guests: 100,
+    price: '$2,380.00',
+    guests: 'Up to 100 guests',
     popular: true,
+    signature: false,
     items: [
       'Pole Tent (20x30 or 20x40)',
       'Up to 10 Round Banquet Tables',
@@ -101,11 +197,11 @@ export const WEDDING_PACKAGES = [
     ],
   },
   {
-    id: 'package-4',
     name: 'Luxury Estate',
-    price: 5165,
-    guests: 150,
+    price: '$5,165.00',
+    guests: 'Up to 150 guests',
     popular: false,
+    signature: false,
     items: [
       'Large Pole Tent (40x60 or larger)',
       'Up to 16 Round Banquet Tables',
@@ -117,10 +213,9 @@ export const WEDDING_PACKAGES = [
     ],
   },
   {
-    id: 'package-5',
     name: 'All-Inclusive Premium',
-    price: 6925,
-    guests: 200,
+    price: '$6,925.00',
+    guests: 'Up to 200 guests',
     popular: false,
     signature: true,
     items: [
@@ -134,57 +229,4 @@ export const WEDDING_PACKAGES = [
       'Delivery, Setup & Breakdown',
     ],
   },
-]
-
-export const PUBLIC_CATEGORIES = [
-  { name: 'Order by Date', slug: 'order-by-date', href: '/order-by-date', image: 'https://files.sysers.com/cp/upload/315/editor/med/NewOrderByDate.png' },
-  { name: 'Weddings', slug: 'weddings', href: '/weddings', image: 'https://files.sysers.com/cp/upload/315/categories/med/victoria-grady_r-tagg-2546-2.jpg' },
-  { name: 'Table & Chair Rentals — Syracuse, NY', slug: 'table-chair-rentals', href: '/category/table-chair-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_38_40-AM.png' },
-  { name: 'Tent Rentals — Syracuse, NY', slug: 'tent-rentals', href: '/category/tent-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_38_16-AM.png' },
-  { name: 'Dance Floor & Stage Rentals — Syracuse, NY', slug: 'dance-floor-stage-rentals', href: '/category/dance-floor-stage-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_41_14-AM.png' },
-  { name: 'Party Rental Packages — Syracuse, NY', slug: 'party-rental-packages', href: '/category/party-rental-packages', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_39_22-AM.png' },
-  { name: 'Beverage & Food Service Rentals — Syracuse, NY', slug: 'beverage-food-service', href: '/category/beverage-food-service', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_44_30-AM.png' },
-  { name: 'Heater & Fan Rentals — Syracuse, NY', slug: 'heater-fan-rentals', href: '/category/heater-fan-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_47_00-AM.png' },
-  { name: 'Linen & Tablecloth Rentals — Syracuse, NY', slug: 'linen-rentals', href: '/category/linen-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_40_05-AM.png' },
-  { name: 'Concession Machine Rentals — Syracuse, NY', slug: 'concession-machine-rentals', href: '/category/concession-machine-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_42_03-AM.png' },
-  { name: 'Yard Game Rentals — Syracuse, NY', slug: 'yard-game-rentals', href: '/category/yard-game-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_37_29-AM.png' },
-  { name: 'Event Lighting Rentals — Syracuse, NY', slug: 'event-lighting-rentals', href: '/category/event-lighting-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_40_24-AM.png' },
-  { name: 'Generator Rentals — Syracuse, NY', slug: 'generator-rentals', href: '/category/generator-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_40_58-AM.png' },
-  { name: 'Photobooth Rentals — Syracuse, NY', slug: 'photobooth-rentals', href: '/category/photobooth-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_39_03-AM.png' },
-  { name: 'Foam Party Machine Rentals — Syracuse, NY', slug: 'foam-party-machine-rentals', href: '/category/foam-party-machine-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_48_33-AM.png' },
-  { name: 'Inflatable Movie Screen Rentals — Syracuse, NY', slug: 'inflatable-movie-screen-rentals', href: '/category/inflatable-movie-screen-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Dec-19--2025--10_49_44-AM.png' },
-  { name: 'Bounce House Rentals — Syracuse, NY', slug: 'bounce-house-rentals', href: '/category/bounce-house-rentals', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Mar-10--2026--04_18_04-PM.png' },
-  { name: 'Party Rental Accessories — Syracuse, NY', slug: 'party-rental-accessories', href: '/category/party-rental-accessories', image: 'https://files.sysers.com/cp/upload/315/categories/med/ChatGPT-Image-Jun-9--2026--05_10_38-AM.png' },
-]
-
-export const NAV_RENTALS = [
-  { name: 'Order by Date', href: '/order-by-date' },
-  { name: 'Browse All Rentals', href: '/category' },
-  { separator: true },
-  { name: 'Weddings', href: '/weddings' },
-  { name: 'Tent Rentals', href: '/category/tent-rentals' },
-  { name: 'Table & Chair Rentals', href: '/category/table-chair-rentals' },
-  { name: 'Linen Rentals', href: '/category/linen-rentals' },
-  { name: 'Dance Floor & Stage Rentals', href: '/category/dance-floor-stage-rentals' },
-  { name: 'Bounce Houses & Inflatables', href: '/category/bounce-house-rentals' },
-  { name: 'Concession Machine Rentals', href: '/category/concession-machine-rentals' },
-  { name: 'Yard Game Rentals', href: '/category/yard-game-rentals' },
-  { name: 'Event Lighting Rentals', href: '/category/event-lighting-rentals' },
-  { name: 'Generator Rentals', href: '/category/generator-rentals' },
-  { name: 'Photobooth Rentals', href: '/category/photobooth-rentals' },
-  { name: 'Foam Party Machine Rentals', href: '/category/foam-party-machine-rentals' },
-  { name: 'Inflatable Movie Screen Rentals', href: '/category/inflatable-movie-screen-rentals' },
-  { name: 'Heater & Fan Rentals', href: '/category/heater-fan-rentals' },
-  { name: 'Party Rental Packages', href: '/category/party-rental-packages' },
-  { name: 'Beverage & Food Service', href: '/category/beverage-food-service' },
-  { name: 'Party Rental Accessories', href: '/category/party-rental-accessories' },
-]
-
-export const REVIEWS = [
-  { author: 'Larissa B.', rating: 5, text: 'This company was easy to work with and the tent was fantastic. We even had a Tornado Watch the day after they put the tent up, and I was so nervous, but it stayed in place!' },
-  { author: 'M C', rating: 5, text: 'Excellent services! Highly recommend - I needed something quick for a bday party- my daughter recommended him last minute so I messaged Jacob & he answered in a timely manner, came out the same day.' },
-  { author: 'Jennie Karoleski', rating: 5, text: 'This was our first time hiring Friendly Party Rentals and everything went very smoothly. We ordered 24 of the Resin chairs with pads and 2 tables.' },
-  { author: 'Angela Radakovich', rating: 5, text: 'Working with Friendly Party Rental to rent some chairs for our graduation party was very easy... even though we live out of town.' },
-  { author: 'Lainie Cox', rating: 5, text: 'We used them for a big graduation party at Syracuse this past weekend and they were so amazing and easy to work with!!!' },
-  { author: 'Mary McCormick', rating: 5, text: 'Excellent service and communication. Would highly recommend' },
 ]
