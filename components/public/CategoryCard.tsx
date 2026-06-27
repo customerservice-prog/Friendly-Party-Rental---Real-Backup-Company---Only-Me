@@ -1,7 +1,5 @@
 'use client'
-
 import Link from 'next/link'
-import Image from 'next/image'
 
 interface CategoryCardProps {
   name: string
@@ -18,14 +16,14 @@ export default function CategoryCard({ name, href, image }: CategoryCardProps) {
           style={{ color: 'rgb(86,86,86)' }}>
           {name}
         </div>
-        <div className="relative w-full" style={{ paddingTop: '75%' }}>
+        <div className="relative w-full overflow-hidden" style={{ paddingTop: '75%' }}>
           {image ? (
-            <Image
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               src={image}
               alt={name}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-              unoptimized
+              referrerPolicy="no-referrer"
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-4xl">
