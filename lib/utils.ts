@@ -23,6 +23,9 @@ export function formatDateTime(date: Date | string): string {
   return format(d, 'MMM d, yyyy h:mm a')
 }
 
+// Alias for backward compatibility
+export const formatDateShort = formatDate
+
 export function slugify(text: string): string {
   return text
     .toLowerCase()
