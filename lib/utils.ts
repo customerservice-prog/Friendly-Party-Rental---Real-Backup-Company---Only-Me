@@ -49,9 +49,13 @@ export const BUSINESS = {
   zip: '13116',
   fullAddress: '330 Costello Parkway, Minoa, NY 13116',
   serviceArea: 'Serving Syracuse & Nearby Cities',
+  hours: 'Mon-Sat: 8am-6pm, Sun: By Appointment',
   facebook: 'https://www.facebook.com/friendlypartyrental',
   youtube: 'https://www.youtube.com/c/FriendlyPartyRental',
   yelp: 'https://www.yelp.com/biz/friendly-party-rental',
+  instagram: 'https://www.instagram.com/friendlypartyrental',
+  tiktok: '',
+  twitter: '',
 }
 
 export const NAV_RENTALS = [
@@ -76,34 +80,10 @@ export const NAV_RENTALS = [
 ]
 
 export const REVIEWS = [
-  {
-    id: '1',
-    author: 'Larissa B.',
-    rating: 5,
-    text: 'This company was easy to work with and the tent was fantastic. We even had a Tornado Watch the day after they put the tent up, and I was so nervous, but it stayed in place!',
-    date: '2024-08-15',
-  },
-  {
-    id: '2',
-    author: 'M C',
-    rating: 5,
-    text: 'Excellent services! Highly recommend - I needed something quick for a bday party.',
-    date: '2024-07-22',
-  },
-  {
-    id: '3',
-    author: 'Jennifer K.',
-    rating: 5,
-    text: 'We used Friendly Party Rental for our daughters graduation party. They were professional, on time, and the tent and tables looked great. Will definitely use again!',
-    date: '2024-06-10',
-  },
-  {
-    id: '4',
-    author: 'Mike T.',
-    rating: 5,
-    text: 'Great experience from start to finish. They were responsive, delivered on time, and picked everything up promptly. Highly recommend for any outdoor event.',
-    date: '2024-05-30',
-  },
+  { id: '1', author: 'Larissa B.', rating: 5, text: 'This company was easy to work with and the tent was fantastic. We even had a Tornado Watch the day after they put the tent up, and I was so nervous, but it stayed in place!', date: '2024-08-15' },
+  { id: '2', author: 'M C', rating: 5, text: 'Excellent services! Highly recommend - I needed something quick for a bday party.', date: '2024-07-22' },
+  { id: '3', author: 'Jennifer K.', rating: 5, text: 'We used Friendly Party Rental for our daughters graduation party. They were professional, on time, and the tent and tables looked great. Will definitely use again!', date: '2024-06-10' },
+  { id: '4', author: 'Mike T.', rating: 5, text: 'Great experience from start to finish. They were responsive, delivered on time, and picked everything up promptly. Highly recommend for any outdoor event.', date: '2024-05-30' },
 ]
 
 export const PUBLIC_CATEGORIES = [
