@@ -27,9 +27,9 @@ export default function HomePage() {
       <section className="bg-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
           {[
-            { title: 'Local &amp; Family-Owned', text: 'Based in Minoa, NY, we proudly serve Syracuse and surrounding Central New York communities with friendly, reliable local service you can trust.' },
+            { title: 'Local & Family-Owned', text: 'Based in Minoa, NY, we proudly serve Syracuse and surrounding Central New York communities with friendly, reliable local service you can trust.' },
             { title: 'Clean, Event-Ready Equipment', text: 'All of our party rental equipment is professionally cleaned, inspected, and ready to use so your event looks great and runs smoothly.' },
-            { title: 'On-Time Delivery &amp; Pickup', text: 'We show up when we say we will. Our team provides dependable delivery and pickup so you can focus on enjoying your event.' },
+            { title: 'On-Time Delivery & Pickup', text: 'We show up when we say we will. Our team provides dependable delivery and pickup so you can focus on enjoying your event.' },
           ].map((item) => (
             <div key={item.title} className="bg-[#F6F4F2] p-6 rounded-lg">
               <div className="text-gray-500 text-2xl mb-3 font-bold">✓</div>
@@ -124,13 +124,14 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {WEDDING_PACKAGES.map((pkg, idx) => (
               <WeddingPackageCard
-                key={pkg.name}
+                key={pkg.id}
+                id={pkg.id}
                 name={pkg.name}
                 price={pkg.price}
                 guests={pkg.guests}
                 items={pkg.items}
                 popular={pkg.popular}
-                signature={pkg.signature ? 'signature' : undefined}
+                signature={pkg.signature}
                 packageNumber={idx + 1}
               />
             ))}
