@@ -38,6 +38,74 @@ export function slugify(text: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
+export const BUSINESS = {
+  name: 'Friendly Party Rental',
+  legalName: 'Friendly Party Rental L.L.C.',
+  phone: '315-884-1498',
+  email: 'customerservice@friendlypartyrental.com',
+  address: '330 Costello Parkway',
+  city: 'Minoa',
+  state: 'NY',
+  zip: '13116',
+  fullAddress: '330 Costello Parkway, Minoa, NY 13116',
+  serviceArea: 'Serving Syracuse & Nearby Cities',
+  facebook: 'https://www.facebook.com/friendlypartyrental',
+  youtube: 'https://www.youtube.com/c/FriendlyPartyRental',
+  yelp: 'https://www.yelp.com/biz/friendly-party-rental',
+}
+
+export const NAV_RENTALS = [
+  { name: 'Order by Date', href: '/order-by-date' },
+  { name: 'Weddings', href: '/weddings' },
+  { name: 'Table & Chair Rentals', href: '/category/table-chair-rentals' },
+  { name: 'Tent Rentals', href: '/category/tent-rentals' },
+  { name: 'Dance Floor & Stage Rentals', href: '/category/dance-floor-stage-rentals' },
+  { name: 'Party Rental Packages', href: '/category/party-rental-packages' },
+  { name: 'Beverage & Food Service Rentals', href: '/category/beverage-food-service' },
+  { name: 'Heater & Fan Rentals', href: '/category/heater-fan-rentals' },
+  { name: 'Linen & Tablecloth Rentals', href: '/category/linen-rentals' },
+  { name: 'Concession Machine Rentals', href: '/category/concession-machine-rentals' },
+  { name: 'Yard Game Rentals', href: '/category/yard-game-rentals' },
+  { name: 'Event Lighting Rentals', href: '/category/event-lighting-rentals' },
+  { name: 'Generator Rentals', href: '/category/generator-rentals' },
+  { name: 'Photobooth Rentals', href: '/category/photobooth-rentals' },
+  { name: 'Foam Party Machine Rentals', href: '/category/foam-party-machine-rentals' },
+  { name: 'Inflatable Movie Screen Rentals', href: '/category/inflatable-movie-screen-rentals' },
+  { name: 'Bounce House Rentals', href: '/category/bounce-house-rentals' },
+  { name: 'Party Rental Accessories', href: '/category/party-rental-accessories' },
+]
+
+export const REVIEWS = [
+  {
+    id: '1',
+    author: 'Larissa B.',
+    rating: 5,
+    text: 'This company was easy to work with and the tent was fantastic. We even had a Tornado Watch the day after they put the tent up, and I was so nervous, but it stayed in place!',
+    date: '2024-08-15',
+  },
+  {
+    id: '2',
+    author: 'M C',
+    rating: 5,
+    text: 'Excellent services! Highly recommend - I needed something quick for a bday party- my daughter recommended him last minute so I messaged Jacob & he answered in a timely manner, came out the same day.',
+    date: '2024-07-22',
+  },
+  {
+    id: '3',
+    author: 'Jennifer K.',
+    rating: 5,
+    text: 'We used Friendly Party Rental for our daughter's graduation party. They were professional, on time, and the tent and tables looked great. Will definitely use again!',
+    date: '2024-06-10',
+  },
+  {
+    id: '4',
+    author: 'Mike T.',
+    rating: 5,
+    text: 'Great experience from start to finish. They were responsive, delivered on time, and picked everything up promptly. Highly recommend for any outdoor event.',
+    date: '2024-05-30',
+  },
+]
+
 export const PUBLIC_CATEGORIES = [
   {
     slug: 'order-by-date',
