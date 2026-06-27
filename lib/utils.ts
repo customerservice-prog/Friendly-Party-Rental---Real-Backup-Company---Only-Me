@@ -34,6 +34,40 @@ export function slugify(text: string): string {
     .replace(/^-+|-+$/g, '')
 }
 
+export function generateOrderNumber(): string {
+  const timestamp = Date.now().toString(36).toUpperCase()
+  const random = Math.random().toString(36).substring(2, 6).toUpperCase()
+  return `FPR-${timestamp}-${random}`
+}
+
+export function generateQuoteNumber(): string {
+  const timestamp = Date.now().toString(36).toUpperCase()
+  const random = Math.random().toString(36).substring(2, 6).toUpperCase()
+  return `QT-${timestamp}-${random}`
+}
+
+export function calculateTax(amount: number, rate: number = 0.08): number {
+  return Math.round(amount * rate * 100) / 100
+}
+
+export function calculateTotal(subtotal: number, tax: number, delivery: number = 0): number {
+  return Math.round((subtotal + tax + delivery) * 100) / 100
+}
+
+export function truncate(text: string, length: number): string {
+  if (text.length <= length) return text
+  return text.substring(0, length) + '...'
+}
+
+export function capitalize(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
+}
+
+export function parseAmount(value: string | number): number {
+  if (typeof value === 'number') return value
+  return parseFloat(value.replace(/[^0-9.-]/g, '')) || 0
+}
+
 export const BUSINESS = {
   name: 'Friendly Party Rental',
   legalName: 'Friendly Party Rental L.L.C.',
