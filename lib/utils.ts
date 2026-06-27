@@ -151,9 +151,10 @@ export const PUBLIC_CATEGORIES = [
 
 export const WEDDING_PACKAGES = [
   {
+    id: 'pkg-1',
     name: 'Backyard Elopement',
-    price: '$345.00',
-    guests: 'Up to 30 guests',
+    price: 345,
+    guests: 30,
     popular: false,
     signature: false,
     items: [
@@ -165,9 +166,10 @@ export const WEDDING_PACKAGES = [
     ],
   },
   {
+    id: 'pkg-2',
     name: 'Classic Ceremony',
-    price: '$520.00',
-    guests: 'Up to 50 guests',
+    price: 520,
+    guests: 50,
     popular: false,
     signature: false,
     items: [
@@ -180,9 +182,10 @@ export const WEDDING_PACKAGES = [
     ],
   },
   {
+    id: 'pkg-3',
     name: 'Garden Reception',
-    price: '$2,380.00',
-    guests: 'Up to 100 guests',
+    price: 2380,
+    guests: 100,
     popular: true,
     signature: false,
     items: [
@@ -190,16 +193,17 @@ export const WEDDING_PACKAGES = [
       'Up to 10 Round Banquet Tables',
       'Up to 100 Chiavari or Folding Chairs',
       'Premium White/Ivory Linens',
-      'Décor & Centerpieces',
+      'Decor & Centerpieces',
       'Portable Dance Floor',
       'String Lights/Uplighting',
       'Delivery, Setup & Breakdown',
     ],
   },
   {
+    id: 'pkg-4',
     name: 'Luxury Estate',
-    price: '$5,165.00',
-    guests: 'Up to 150 guests',
+    price: 5165,
+    guests: 150,
     popular: false,
     signature: false,
     items: [
@@ -213,9 +217,10 @@ export const WEDDING_PACKAGES = [
     ],
   },
   {
+    id: 'pkg-5',
     name: 'All-Inclusive Premium',
-    price: '$6,925.00',
-    guests: 'Up to 200 guests',
+    price: 6925,
+    guests: 200,
     popular: false,
     signature: true,
     items: [
